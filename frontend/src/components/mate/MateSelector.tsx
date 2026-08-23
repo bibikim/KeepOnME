@@ -34,10 +34,10 @@ export function MateSelector({ mates, selectedMateId, onSelect }: MateSelectorPr
       <button
         type="button"
         onClick={() => setShowConnectModal(true)}
-        className="flex shrink-0 items-center justify-center rounded-full bg-indigo-50 p-1.5 text-indigo-600 transition-colors hover:bg-indigo-100"
-        aria-label="메이트 추가"
+        className="flex shrink-0 items-center gap-1 rounded-full bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-600 transition-colors hover:bg-indigo-100"
       >
         <Plus size={16} />
+        메이트 추가
       </button>
       <button
         type="button"

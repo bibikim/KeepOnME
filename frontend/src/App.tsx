@@ -105,7 +105,7 @@ function DashboardTab({ selectedDate, onSelectDate }: DateScopedTabProps) {
 }
 
 function MateTab({ selectedDate, onSelectDate }: DateScopedTabProps) {
-  const { data: mates } = useMyMates()
+  const { data: mates, isLoading: matesLoading, isError: matesError } = useMyMates()
   const [selectedMateId, setSelectedMateId] = useState<number | null>(null)
   const [showConnectModal, setShowConnectModal] = useState(false)
 
@@ -122,8 +122,16 @@ function MateTab({ selectedDate, onSelectDate }: DateScopedTabProps) {
     { enabled: !!selectedMateId },
   )
 
-  if (!mates) {
-    return null
+  if (matesLoading) {
+    return <p className="py-14 text-center text-sm text-gray-400">불러오는 중...</p>
+  }
+
+  if (matesError || !mates) {
+    return (
+      <Card className="flex flex-col items-center gap-3 border-dashed py-14 text-center shadow-none">
+        <p className="text-sm text-rose-500">메이트 목록을 불러오지 못했어요. 새로고침 후 다시 시도해주세요.</p>
+      </Card>
+    )
   }
 
   if (mates.length === 0) {
