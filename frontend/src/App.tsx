@@ -22,6 +22,8 @@ import { useToast } from './hooks/useToast'
 import { todayISO, todayLabel, weekDayOf, formatDateLabel } from './lib/date'
 import { notifyBrowser } from './lib/notify'
 import type { Poke } from './types'
+import { DeveloperTab } from './components/developer/DeveloperTab'
+import { LearningTab } from './components/learning/LearningTab'
 
 function LandingScreen() {
   const [showAuthModal, setShowAuthModal] = useState(false)
@@ -192,8 +194,12 @@ function AuthenticatedApp() {
         <main className="flex-1 px-6 py-6">
           {activeTab === 'dashboard' ? (
             <DashboardTab selectedDate={selectedDate} onSelectDate={setSelectedDate} />
-          ) : (
+          ) : activeTab === 'mate' ? (
             <MateTab selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+          ) : activeTab === 'developer' ? (
+            <DeveloperTab />
+          ) : (
+            <LearningTab />
           )}
         </main>
       </div>

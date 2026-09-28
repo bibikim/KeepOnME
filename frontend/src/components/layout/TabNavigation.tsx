@@ -1,4 +1,4 @@
-export type Tab = "dashboard" | "mate";
+export type Tab = "dashboard" | "mate" | "developer" | "learning";
 
 interface TabNavigationProps {
   activeTab: Tab;
@@ -35,6 +35,28 @@ export function TabNavigation({
           }`}
         >
           🕵️ 메이트 {mateConnected ? "" : " (미연결)"}
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange("developer")}
+          className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+            activeTab === "developer"
+              ? "bg-indigo-600 text-white shadow-sm"
+              : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+          }`}
+        >
+          🧭 개발자
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange("learning")}
+          className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+            activeTab === "learning"
+              ? "bg-indigo-600 text-white shadow-sm"
+              : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+          }`}
+        >
+          📚 학습
         </button>
       </div>
     </div>
